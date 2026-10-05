@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>বাংলাদেশ ছাত্রলীগ — মেহেরপুর জেলা শাখা | CV ও সাংগঠনিক তথ্য ব্যবস্থাপনা</title>
+<style>
+/* ============================================================
+   BCL Meherpur — iOS-inspired, Bengali-first, mobile-first UI
+   Green-based professional identity. Restrained, no heavy gradients.
+   ============================================================ */
+:root {
+  --green: #0e7a3d;
+  --green-dark: #0a5c2e;
+  --green-soft: #e8f5ec;
+  --red: #d63b2f;
+  --ink: #1c1e21;
+  --muted: #6b7280;
+  --bg: #f2f4f3;
+  --card: #ffffff;
+  --line: #e5e7eb;
+  --radius: 16px;
+  --shadow: 0 2px 12px rgba(16, 24, 20, 0.07);
+  --shadow-lg: 0 8px 28px rgba(16, 24, 20, 0.12);
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { font-size: 16px; }
+body {
+  margin: 0; font-family: "Hind Siliguri", "Noto Sans Bengali", "SolaimanLipi", system-ui, sans-serif;
+  background: var(--bg); color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+.hidden { display: none !important; }
+#app { min-height: 100dvh; padding-bottom: calc(76px + var(--sab)); }
+#app.no-nav { padding-bottom: 0; }
+
+/* ---------- header ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(255,255,255,.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+  padding: calc(10px + var(--sat)) 16px 10px;
+  display: flex; align-items: center; gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand .logo {
+  width: 38px; height: 38px; border-radius: 12px; background: var(--green);
+  color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 20px; flex: none;
+}
+.brand h1 { font-size: 15px; margin: 0; line-height: 1.25; }
+.brand small { color: var(--muted); font-size: 12px; }
+.topbar .spacer { flex: 1; }
+.avatar-btn {
+  width: 38px; height: 38px; border-radius: 50%; border: 0; background: var(--green-soft);
+  color: var(--green-dark); font-weight: 700; cursor: pointer;
+}
+
+/* ---------- layout ---------- */
+.page { max-width: 1180px; margin: 0 auto; padding: 16px 16px 24px; animation: pageIn .28s ease; }
+@keyframes pageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.page-title { font-size: 22px; font-weight: 800; margin: 4px 0 2px; }
+.page-sub { color: var(--muted); font-size: 13.5px; margin: 0 0 16px; }
+
+.card {
+  background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 18px; margin-bottom: 14px; border: 1px solid rgba(0,0,0,.02);
+}
+.card h3 { margin: 0 0 12px; font-size: 16px; }
+
+/* ---------- stats ---------- */
+.stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 14px; }
+@media (min-width: 720px) { .stats-grid { grid-template-columns: repeat(5, 1fr); } }
+.stat {
+  background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 16px 14px; text-align: center; border-top: 4px solid var(--green);
+}
+.stat .num { font-size: 30px; font-weight: 800; color: var(--green-dark); line-height: 1.1; }
+.stat .lbl { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+.bar-row { display: flex; align-items: center; gap: 10px; margin: 8px 0; font-size: 13px; }
+.bar-row .name { width: 110px; flex: none; }
+.bar-track { flex: 1; height: 10px; background: #edf0ee; border-radius: 99px; overflow: hidden; }
+.bar-fill { height: 100%; background: var(--green); border-radius: 99px; transition: width .6s ease; }
+.bar-row .val { width: 36px; text-align: right; font-weight: 700; }
+
+/* ---------- forms ---------- */
+.field { margin-bottom: 14px; }
+.field label { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 6px; }
+.field label .req { color: var(--red); }
+input, select, textarea {
+  width: 100%; padding: 12px 14px; font-size: 15px; font-family: inherit;
+  border: 1.5px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink);
+  transition: border-color .15s, box-shadow .15s;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(14,122,61,.12);
+}
+textarea { min-height: 84px; resize: vertical; }
+.form-grid { display: grid; grid-template-columns: 1fr; gap: 0 14px; }
+@media (min-width: 720px) { .form-grid.two { grid-template-columns: 1fr 1fr; } }
+.field .err { color: var(--red); font-size: 12.5px; margin-top: 4px; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 22px; border-radius: 14px; border: 0; font-size: 15px; font-weight: 700;
+  font-family: inherit; cursor: pointer; background: var(--green); color: #fff;
+  transition: transform .12s ease, opacity .15s, background .15s;
+  -webkit-user-select: none; user-select: none; touch-action: manipulation;
+}
+.btn:active { transform: scale(.96); }
+.btn:disabled { opacity: .55; cursor: default; transform: none; }
+.btn.secondary { background: #eef1ef; color: var(--ink); }
+.btn.danger { background: var(--red); }
+.btn.ghost { background: transparent; color: var(--green-dark); }
+.btn.small { padding: 9px 14px; font-size: 13.5px; border-radius: 11px; }
+.btn.block { width: 100%; }
+.btn.loading { position: relative; color: transparent; pointer-events: none; }
+.btn.loading::after {
+  content: ""; position: absolute; width: 20px; height: 20px; border-radius: 50%;
+  border: 3px solid rgba(255,255,255,.4); border-top-color: #fff; animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+.sticky-actions {
+  position: sticky; bottom: calc(76px + var(--sab)); z-index: 30;
+  background: rgba(255,255,255,.92); backdrop-filter: blur(10px);
+  padding: 12px 16px; border-top: 1px solid var(--line);
+  display: flex; gap: 10px; border-radius: 18px 18px 0 0; margin: 18px -16px -24px;
+}
+@media (min-width: 900px) { .sticky-actions { bottom: 0; border-radius: 0; } }
+
+/* ---------- list / table ---------- */
+.list-item {
+  display: flex; gap: 12px; align-items: center; padding: 14px 16px;
+  background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+  margin-bottom: 10px; cursor: pointer; transition: transform .12s;
+  border: 1px solid rgba(0,0,0,.02);
+}
+.list-item:active { transform: scale(.985); }
+.list-item .thumb {
+  width: 48px; height: 48px; border-radius: 50%; object-fit: cover; background: var(--green-soft);
+  display: grid; place-items: center; font-weight: 800; color: var(--green-dark); flex: none; overflow: hidden;
+}
+.list-item .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.list-item .meta { flex: 1; min-width: 0; }
+.list-item .meta .t { font-weight: 700; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.list-item .meta .s { color: var(--muted); font-size: 12.5px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 700;
+  background: var(--green-soft); color: var(--green-dark); flex: none;
+}
+.badge.draft { background: #fef3e2; color: #b45309; }
+.badge.submitted { background: #e0effe; color: #1d4ed8; }
+.badge.verified { background: var(--green-soft); color: var(--green-dark); }
+.badge.archived { background: #f1f2f4; color: var(--muted); }
+table.data { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.data th, table.data td { padding: 10px 8px; text-align: left; border-bottom: 1px solid var(--line); }
+table.data th { color: var(--muted); font-size: 12.5px; font-weight: 700; }
+.table-wrap { overflow-x: auto; border-radius: 12px; }
+
+/* ---------- wizard ---------- */
+.steps { display: flex; gap: 6px; margin: 0 0 18px; overflow-x: auto; padding-bottom: 4px; }
+.step-dot {
+  flex: 1; min-width: 86px; text-align: center; font-size: 12px; color: var(--muted);
+  padding: 9px 6px; border-radius: 12px; background: #fff; border: 1.5px solid var(--line); cursor: pointer;
+  transition: all .15s;
+}
+.step-dot.active { border-color: var(--green); color: var(--green-dark); font-weight: 700; background: var(--green-soft); }
+.step-dot.done { border-color: var(--green); color: var(--green); }
+
+/* ---------- live preview ---------- */
+.builder { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 1024px) { .builder { grid-template-columns: 1fr 1fr; align-items: start; } }
+.preview-pane { position: sticky; top: 76px; }
+.preview-doc {
+  background: #fff; border-radius: 8px; box-shadow: var(--shadow-lg);
+  padding: 34px 30px; font-size: 13.5px; line-height: 1.7; color: #222;
+  max-height: calc(100dvh - 130px); overflow: auto;
+}
+.preview-doc .cv-head { text-align: center; border-bottom: 3px double var(--green-dark); padding-bottom: 12px; margin-bottom: 16px; }
+.preview-doc .cv-head h2 { margin: 0; color: var(--green-dark); font-size: 19px; }
+.preview-doc .cv-head .org { font-weight: 700; font-size: 15px; }
+.preview-doc h4.sec { color: var(--green-dark); border-bottom: 1px solid var(--line); padding-bottom: 4px; margin: 18px 0 8px; font-size: 14.5px; }
+.kv { display: grid; grid-template-columns: 130px 1fr; gap: 2px 8px; }
+.kv dt { color: var(--muted); } .kv dd { margin: 0; font-weight: 600; }
+.cv-photo { width: 110px; height: 130px; object-fit: cover; border: 1px solid var(--line); border-radius: 6px; float: right; margin: 0 0 8px 12px; background: #f6f7f6; }
+.preview-doc table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.preview-doc th, .preview-doc td { border: 1px solid #d9d9d9; padding: 5px 7px; text-align: left; }
+.preview-doc th { background: #f2f7f3; }
+.fab-preview {
+  position: fixed; right: 18px; bottom: calc(92px + var(--sab)); z-index: 45;
+  width: 58px; height: 58px; border-radius: 50%; border: 0; background: var(--green); color: #fff;
+  font-size: 24px; box-shadow: var(--shadow-lg); cursor: pointer;
+}
+.fab-preview:active { transform: scale(.94); }
+@media (min-width: 1024px) { .fab-preview { display: none; } }
+.preview-sheet {
+  position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,.45);
+  display: flex; align-items: flex-end; animation: fadeIn .2s ease;
+}
+.preview-sheet .sheet {
+  background: #fff; width: 100%; max-height: 92dvh; border-radius: 20px 20px 0 0;
+  overflow: auto; padding: 20px 16px calc(24px + var(--sab)); animation: sheetUp .28s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } }
+@keyframes sheetUp { from { transform: translateY(40px); opacity: .6; } }
+
+/* ---------- tree ---------- */
+.tree ul { list-style: none; margin: 0; padding-left: 18px; }
+.tree > ul { padding-left: 0; }
+.tree-node { margin: 2px 0; }
+.tree-row {
+  display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 12px;
+  background: #fff; border: 1px solid var(--line); cursor: pointer; font-size: 14.5px; font-weight: 600;
+}
+.tree-row .count { margin-left: auto; }
+.tree-toggle { width: 26px; height: 26px; border-radius: 8px; border: 1px solid var(--line); background: #f7f8f7; cursor: pointer; font-size: 14px; line-height: 1; flex: none; }
+.type-tag { font-size: 11px; color: var(--muted); font-weight: 600; }
+
+/* ---------- bottom nav ---------- */
+#bottomnav {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+  background: rgba(255,255,255,.9); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--line);
+  display: flex; padding: 8px 6px calc(8px + var(--sab));
+}
+#bottomnav a {
+  flex: 1; text-align: center; text-decoration: none; color: var(--muted);
+  font-size: 11px; font-weight: 600; padding: 4px 2px; border-radius: 10px;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+}
+#bottomnav a .ic { font-size: 21px; line-height: 1; }
+#bottomnav a.active { color: var(--green-dark); }
+
+/* ---------- toast / modal / skeleton ---------- */
+#toasts { position: fixed; top: calc(14px + var(--sat)); left: 50%; transform: translateX(-50%); z-index: 200; width: min(92vw, 420px); }
+.toast {
+  background: #1f2937; color: #fff; border-radius: 14px; padding: 13px 16px; margin-bottom: 8px;
+  font-size: 14px; box-shadow: var(--shadow-lg); animation: toastIn .25s ease; display: flex; gap: 10px; align-items: center;
+}
+.toast.ok { background: var(--green-dark); }
+.toast.err { background: #b91c1c; }
+@keyframes toastIn { from { opacity: 0; transform: translateY(-12px); } }
+.modal-back {
+  position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.45);
+  display: grid; place-items: center; padding: 18px; animation: fadeIn .18s ease;
+}
+.modal {
+  background: #fff; border-radius: 20px; width: min(94vw, 480px); max-height: 88dvh; overflow: auto;
+  padding: 22px; box-shadow: var(--shadow-lg); animation: modalIn .22s ease;
+}
+@keyframes modalIn { from { opacity: 0; transform: scale(.94); } }
+.skel { border-radius: 12px; background: linear-gradient(90deg, #eceff0 25%, #f7f9f8 50%, #eceff0 75%); background-size: 200% 100%; animation: shimmer 1.2s infinite; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* ---------- cropper ---------- */
+.crop-stage { position: relative; width: 100%; height: 300px; background: #111; border-radius: 14px; overflow: hidden; touch-action: none; }
+.crop-stage canvas { position: absolute; cursor: grab; }
+.crop-frame {
+  position: absolute; border: 2px dashed #fff; box-shadow: 0 0 0 9999px rgba(0,0,0,.55);
+  pointer-events: none;
+}
+
+/* ---------- login ---------- */
+.login-wrap { min-height: 100dvh; display: grid; place-items: center; padding: 24px; background: var(--green-soft); }
+.login-card { width: min(94vw, 400px); }
+.login-card .brand { justify-content: center; margin-bottom: 18px; }
+.login-card .brand .logo { width: 64px; height: 64px; font-size: 32px; border-radius: 18px; }
+.center { text-align: center; }
+.mt { margin-top: 14px; }
+.row-flex { display: flex; gap: 10px; align-items: center; }
+.chip { display: inline-block; padding: 6px 12px; background: #eef1ef; border-radius: 99px; font-size: 13px; margin: 0 6px 6px 0; }
+.searchbar { position: sticky; top: 60px; z-index: 20; padding: 8px 0; background: var(--bg); }
+.filters { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 10px; }
+.filters select { width: auto; flex: none; padding: 9px 12px; font-size: 13.5px; }
+.empty { text-align: center; color: var(--muted); padding: 44px 16px; }
+.empty .big { font-size: 44px; margin-bottom: 8px; }
+.sig-img { max-width: 220px; max-height: 90px; border: 1px dashed var(--line); border-radius: 8px; background: #fff; }
+
+</style>
+<style media="print">
+/* print.css — A4 print / PDF view for CVs. Pages flow naturally; no fixed page count. */
+@media print {
+  body { background: #fff; }
+  #bottomnav, .topbar, .sticky-actions, .fab-preview, #toasts, .no-print { display: none !important; }
+  #app { padding: 0; }
+  .page { max-width: none; padding: 0; animation: none; }
+  .card { box-shadow: none; border: 0; padding: 0; margin: 0; }
+}
+.print-doc {
+  font-family: "Hind Siliguri", "Noto Sans Bengali", "SolaimanLipi", serif;
+  color: #111; font-size: 12pt; line-height: 1.65; background: #fff;
+}
+.print-doc .p-head { text-align: center; border-bottom: 3pt double #0a5c2e; padding-bottom: 10pt; margin-bottom: 14pt; }
+.print-doc .p-head h1 { margin: 0; font-size: 20pt; color: #0a5c2e; }
+.print-doc .p-head .org { font-size: 14pt; font-weight: 700; }
+.print-doc .p-head .slogan { font-size: 10pt; color: #555; }
+.print-doc h3.sec {
+  font-size: 13pt; color: #0a5c2e; border-bottom: 1pt solid #ccc;
+  padding-bottom: 3pt; margin: 16pt 0 8pt; page-break-after: avoid;
+}
+.print-doc .p-photo { width: 3.2cm; height: 3.8cm; object-fit: cover; border: 1pt solid #999; float: right; margin: 0 0 8pt 12pt; }
+.print-doc dl.kv { display: grid; grid-template-columns: 4.2cm 1fr; gap: 2pt 8pt; margin: 0; }
+.print-doc dl.kv dt { color: #444; }
+.print-doc dl.kv dd { margin: 0; font-weight: 600; }
+.print-doc table { width: 100%; border-collapse: collapse; font-size: 10.5pt; }
+.print-doc th, .print-doc td { border: 1pt solid #999; padding: 4pt 6pt; text-align: left; }
+.print-doc th { background: #eef5f0; }
+.print-doc tr, .print-doc h3.sec, .print-doc dl.kv { page-break-inside: avoid; }
+.print-doc .p-foot { margin-top: 18pt; display: flex; justify-content: space-between; }
+.print-doc .p-sig { text-align: center; font-size: 10.5pt; }
+.print-doc .p-sig img { max-width: 4.5cm; max-height: 2cm; }
+@page { size: A4; margin: 18mm 15mm; }
+
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="view"></div>
+  <nav id="bottomnav" class="hidden"></nav>
+</div>
+<div id="toasts"></div>
+<div id="modal-root"></div>
+<script>
+/* ============================================================
+   BCL Meherpur — SPA frontend (vanilla JS, no build step)
+   ============================================================ */
+'use strict';
+
+const App = {
+  user: null,
+  perms: [],
+  units: [],
+  unitsById: {},
+  positions: [],
+  roles: [],
+  route: null,
+};
+
+/* ---------- tiny helpers ---------- */
+const $ = (sel, el = document) => el.querySelector(sel);
+const $$ = (sel, el = document) => [...el.querySelectorAll(sel)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const bnDigits = s => String(s ?? '').replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+
+async function api(path, opts = {}) {
+  const res = await fetch(path, {
+    headers: { 'Content-Type': 'application/json' },
+    ...opts,
+    body: opts.body ? JSON.stringify(opts.body) : undefined,
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'কিছু একটা সমস্যা হয়েছে');
+  return data;
+}
+
+function toast(msg, type = '') {
+  const el = document.createElement('div');
+  el.className = 'toast ' + type;
+  el.innerHTML = `<span>${type === 'ok' ? '✓' : type === 'err' ? '⚠' : 'ℹ'}</span><span>${esc(msg)}</span>`;
+  $('#toasts').appendChild(el);
+  setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity .3s'; setTimeout(() => el.remove(), 320); }, 2600);
+}
+
+function modal(html, { wide = false } = {}) {
+  const back = document.createElement('div');
+  back.className = 'modal-back';
+  back.innerHTML = `<div class="modal" ${wide ? 'style="width:min(94vw,720px)"' : ''}>${html}</div>`;
+  back.addEventListener('click', e => { if (e.target === back) closeModal(); });
+  $('#modal-root').appendChild(back);
+  return back;
+}
+function closeModal() { $('#modal-root').innerHTML = ''; }
+
+function confirmDialog(title, text, okLabel = 'নিশ্চিত করুন') {
+  return new Promise(resolve => {
+    const m = modal(`<h3 style="margin-top:0">${esc(title)}</h3><p style="color:#555">${esc(text)}</p>
+      <div class="btn-row" style="justify-content:flex-end">
+        <button class="btn secondary" data-x="no">বাতিল</button>
+        <button class="btn danger" data-x="yes">${esc(okLabel)}</button>
+      </div>`);
+    m.addEventListener('click', e => {
+      const x = e.target.dataset.x;
+      if (x) { closeModal(); resolve(x === 'yes'); }
+    });
+  });
+}
+
+function skeleton(n = 4) {
+  return Array(n).fill('<div class="skel" style="height:64px;margin-bottom:10px"></div>').join('');
+}
+
+const STATUS_BN = { draft: 'খসড়া', submitted: 'জমা দেওয়া', verified: 'যাচাইকৃত', archived: 'আর্কাইভ' };
+const TYPE_BN = { district: 'জেলা', upazila: 'উপজেলা', municipality: 'পৌরসভা', union: 'ইউনিয়ন', ward: 'ওয়ার্ড', village: 'গ্রাম', other: 'অন্যান্য' };
+
+function can(perm) { return App.perms.includes(perm); }
+function unitName(id) { return App.unitsById[id]?.name_bn || '—'; }
+function unitPath(id) {
+  const parts = []; let u = App.unitsById[id];
+  while (u) { parts.unshift(u.name_bn); u = App.unitsById[u.parent_id]; }
+  return parts.join(' → ');
+}
+
+/* ---------- shell / navigation ---------- */
+const NAV = [
+  { hash: '#/dashboard', icon: '📊', label: 'ড্যাশবোর্ড', perm: 'view_dashboard' },
+  { hash: '#/cvs', icon: '📄', label: 'সিভি', perm: 'view_members' },
+  { hash: '#/directory', icon: '🗂️', label: 'ডিরেক্টরি', perm: 'view_dashboard' },
+  { hash: '#/admin', icon: '⚙️', label: 'অ্যাডমিন', perm: 'manage_units' },
+];
+
+function renderShell() {
+  const nav = $('#bottomnav');
+  if (!App.user) { nav.classList.add('hidden'); $('#app').classList.add('no-nav'); return; }
+  $('#app').classList.remove('no-nav');
+  nav.classList.remove('hidden');
+  nav.innerHTML = NAV.filter(n => can(n.perm)).map(n =>
+    `<a href="${n.hash}" data-nav="${n.hash}" class="${App.route === n.hash ? 'active' : ''}">
+       <span class="ic">${n.icon}</span><span>${n.label}</span></a>`).join('');
+}
+
+function topbar(title, sub) {
+  return `<header class="topbar">
+    <div class="brand"><div class="logo">ছা</div>
+      <div><h1>${esc(title)}</h1><small>${esc(sub)}</small></div></div>
+    <div class="spacer"></div>
+    <button class="avatar-btn" id="userMenu" title="${esc(App.user?.full_name || '')}">${esc((App.user?.full_name || 'ব')[0])}</button>
+  </header>`;
+}
+document.addEventListener('click', async e => {
+  if (e.target.id === 'userMenu') {
+    if (!App.user) { location.hash = '#/login'; return; }
+    const m = modal(`<h3 style="margin-top:0">${esc(App.user.full_name || App.user.username)}</h3>
+      <p style="color:#555;margin:4px 0">ভূমিকা: <b>${esc(roleLabel(App.user.role))}</b><br>ইউনিট: ${esc(unitName(App.user.unit_id))}</p>
+      <div class="btn-row"><button class="btn secondary block" data-x="logout">লগআউট</button></div>`);
+    m.addEventListener('click', async ev => {
+      if (ev.target.dataset.x === 'logout') {
+        await api('/api/logout', { method: 'POST' }).catch(() => {});
+        App.user = null; location.hash = '#/login';
+      }
+    });
+  }
+});
+function roleLabel(r) { return (App.roles.find(x => x.name === r) || {}).label_bn || r; }
+
+/* ---------- router ---------- */
+const routes = {};
+function setView(html) { $('#view').innerHTML = html; window.scrollTo(0, 0); }
+
+async function boot() {
+  try {
+    const me = await api('/api/me');
+    App.user = me.user; App.perms = me.permissions;
+  } catch { App.user = null; }
+  if (App.user) {
+    try {
+      const [u, p, r] = await Promise.all([api('/api/units'), api('/api/positions'), api('/api/roles')]);
+      App.units = u.units; App.positions = p.positions; App.roles = r.roles;
+      App.unitsById = Object.fromEntries(u.units.map(x => [x.id, x]));
+    } catch (e) { console.warn(e); }
+  }
+  renderShell();
+  window.addEventListener('hashchange', navigate);
+  navigate();
+}
+
+async function navigate() {
+  let hash = location.hash || '#/dashboard';
+  if (!App.user && hash !== '#/login') hash = '#/login';
+  if (App.user && hash === '#/login') hash = '#/dashboard';
+  App.route = hash.split('?')[0].split('/').slice(0, 2).join('/');
+  renderShell();
+  const [page, param] = hash.replace('#/', '').split('/');
+  const fn = routes[page] || routes.dashboard;
+  try { await fn(param, hash); }
+  catch (e) { setView(`<div class="page"><div class="card"><p>⚠ ${esc(e.message)}</p></div></div>`); }
+}
+document.addEventListener('DOMContentLoaded', boot);
+
+/* ---------- login ---------- */
+routes.login = async () => {
+  $('#bottomnav').classList.add('hidden'); $('#app').classList.add('no-nav');
+  setView(`<div class="login-wrap"><div class="login-card">
+    <div class="card"><div class="brand" style="flex-direction:column;text-align:center">
+      <div class="logo">ছা</div>
+      <div><h1 style="font-size:18px">বাংলাদেশ ছাত্রলীগ</h1><small>মেহেরপুর জেলা শাখা — CV ও সাংগঠনিক তথ্য ব্যবস্থাপনা</small></div></div>
+      <form id="loginForm" style="margin-top:18px">
+        <div class="field"><label>ব্যবহারকারীর নাম</label><input name="username" autocomplete="username" required></div>
+        <div class="field"><label>পাসওয়ার্ড</label><input name="password" type="password" autocomplete="current-password" required></div>
+        <button class="btn block" type="submit">লগইন</button>
+      </form></div>
+    <p class="center" style="color:#6b7280;font-size:12.5px">ডিফল্ট লগইন: <b>admin</b> / <b>admin123</b><br>(প্রথম লগইনের পর পাসওয়ার্ড বদলে নিন)</p>
+  </div></div>`);
+  $('#loginForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.classList.add('loading');
+    try {
+      await api('/api/login', { method: 'POST', body: Object.fromEntries(new FormData(e.target)) });
+      location.reload();
+    } catch (err) { toast(err.message, 'err'); btn.classList.remove('loading'); }
+  });
+};
+
+/* ---------- dashboard ---------- */
+routes.dashboard = async () => {
+  setView(topbar('ড্যাশবোর্ড', 'বাংলাদেশ ছাত্রলীগ, মেহেরপুর জেলা শাখা') +
+    `<div class="page"><div id="dash">${skeleton(3)}</div></div>`);
+  try {
+    const { stats } = await api('/api/dashboard');
+    const s = stats;
+    const levelRows = Object.entries(s.by_level)
+      .filter(([, v]) => v > 0)
+      .map(([k, v]) => ({ name: TYPE_BN[k] || k, v }));
+    const max = Math.max(1, ...levelRows.map(r => r.v));
+    $('#dash').innerHTML = `
+      <div class="stats-grid">
+        <div class="stat"><div class="num">${bnDigits(s.total_members)}</div><div class="lbl">মোট সদস্য</div></div>
+        <div class="stat"><div class="num">${bnDigits(s.verified)}</div><div class="lbl">যাচাইকৃত CV</div></div>
+        <div class="stat"><div class="num">${bnDigits(s.submitted)}</div><div class="lbl">জমা দেওয়া</div></div>
+        <div class="stat"><div class="num">${bnDigits(s.drafts)}</div><div class="lbl">খসড়া</div></div>
+        <div class="stat"><div class="num">${bnDigits(s.archived)}</div><div class="lbl">আর্কাইভ</div></div>
+      </div>
+      <div class="card"><h3>স্তরভিত্তিক সদস্য</h3>
+        ${levelRows.length ? levelRows.map(r => `
+          <div class="bar-row"><span class="name">${esc(r.name)} পর্যায়</span>
+            <div class="bar-track"><div class="bar-fill" style="width:${Math.round(r.v / max * 100)}%"></div></div>
+            <span class="val">${bnDigits(r.v)}</span></div>`).join('')
+          : '<p style="color:#888">এখনো কোনো সদস্য যোগ হয়নি।</p>'}
+      </div>
+      ${can('create_cv') ? `<a href="#/cv/new" class="btn block">＋ নতুন CV তৈরি করুন</a>` : ''}`;
+  } catch (e) { $('#dash').innerHTML = `<div class="card">⚠ ${esc(e.message)}</div>`; }
+};
+
+/* ---------- CV list + search ---------- */
+routes.cvs = async (param, hash) => {
+  const params = new URLSearchParams((hash.split('?')[1] || ''));
+  const presetUnit = params.get('unit');
+  if (presetUnit) params.set('unit_id', presetUnit);
+  setView(topbar('সদস্য CV তালিকা', 'খুঁজুন ও ফিল্টার করুন') + `
+  <div class="page">
+    <div class="searchbar">
+      <input id="q" placeholder="🔍 নাম, মোবাইল বা CV নম্বর দিয়ে খুঁজুন…" value="${esc(params.get('q') || '')}">
+      <div class="filters">
+        <select id="fStatus"><option value="">সব অবস্থা</option>
+          ${Object.entries(STATUS_BN).map(([k, v]) => `<option value="${k}" ${params.get('status') === k ? 'selected' : ''}>${v}</option>`).join('')}</select>
+        <select id="fLevel"><option value="">সব স্তর</option>
+          ${Object.entries(TYPE_BN).map(([k, v]) => `<option value="${k}" ${params.get('level') === k ? 'selected' : ''}>${v}</option>`).join('')}</select>
+      </div>
+    </div>
+    <div id="cvList">${skeleton()}</div>
+  </div>`);
+  let t;
+  const load = async () => {
+    const qs = new URLSearchParams({
+      q: $('#q').value, status: $('#fStatus').value, level: $('#fLevel').value,
+    });
+    try {
+      const { cvs } = await api('/api/cvs?' + qs);
+      $('#cvList').innerHTML = cvs.length ? cvs.map(cvRow).join('')
+        : `<div class="empty"><div class="big">📭</div>কোনো CV পাওয়া যায়নি</div>`;
+    } catch (e) { $('#cvList').innerHTML = `<div class="card">⚠ ${esc(e.message)}</div>`; }
+  };
+  $('#q').addEventListener('input', () => { clearTimeout(t); t = setTimeout(load, 350); });
+  $('#fStatus').addEventListener('change', load);
+  $('#fLevel').addEventListener('change', load);
+  $('#cvList').addEventListener('click', e => {
+    const el = e.target.closest('[data-cv]');
+    if (el) location.hash = '#/cv/' + el.dataset.cv;
+  });
+  load();
+};
+
+function cvRow(c) {
+  const d = c.data || {}, p = d.personal || {}, o = d.org || {};
+  const photo = c.photo_path ? `/uploads/${esc(c.photo_path)}` : null;
+  return `<div class="list-item" data-cv="${c.id}">
+    <div class="thumb">${photo ? `<img src="${photo}" alt="">` : esc((p.full_name || '?')[0])}</div>
+    <div class="meta"><div class="t">${esc(p.full_name || 'নাম নেই')}</div>
+      <div class="s">${esc(o.current_post || '')} ${o.current_post ? '•' : ''} ${esc(c.unit_name || '')} ${c.cv_code ? '• ' + esc(c.cv_code) : ''}</div></div>
+    <span class="badge ${c.status}">${STATUS_BN[c.status] || c.status}</span>
+  </div>`;
+}
+
+/* ---------- CV builder (multi-step wizard + live preview) ---------- */
+const PERSONAL_FIELDS = [
+  ['full_name', 'পূর্ণ নাম', 1], ['full_name_en', 'নামের ইংরেজি বানান'], ['father_name', "পিতার নাম"],
+  ['mother_name', 'মাতার নাম'], ['dob', 'জন্ম তারিখ', 0, 'date'], ['nationality', 'জাতীয়তা'],
+  ['religion', 'ধর্ম'], ['marital', 'বৈবাহিক অবস্থা', 0, 'select', ['অবিবাহিত', 'বিবাহিত', 'বিধবা', 'তালাকপ্রাপ্ত']],
+  ['blood', 'রক্তের গ্রুপ', 0, 'select', ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-']],
+  ['mobile', 'মোবাইল নম্বর', 1, 'tel'], ['mobile2', 'বিকল্প মোবাইল নম্বর', 0, 'tel'],
+  ['email', 'ইমেইল', 0, 'email'], ['nid', 'জাতীয় পরিচয়পত্র নম্বর'],
+  ['present_address', 'বর্তমান ঠিকানা', 0, 'textarea'], ['permanent_address', 'স্থায়ী ঠিকানা', 0, 'textarea'],
+];
+const ORG_LEVELS = [
+  ['district', 'জেলা'], ['upazila', 'উপজেলা'], ['municipality', 'পৌরসভা'],
+  ['union', 'ইউনিয়ন'], ['ward', 'ওয়ার্ড'], ['village', 'গ্রাম/মহল্লা'],
+];
+const STEPS = ['ব্যক্তিগত তথ্য', 'সাংগঠনিক তথ্য', 'শিক্ষা', 'অভিজ্ঞতা', 'কার্যক্রম', 'ছবি ও স্বাক্ষর'];
+
+let WZ = null; // wizard state
+
+function blankCv() {
+  return { personal: { nationality: 'বাংলাদেশী' }, org: { level: 'union' }, education: [], experience: [], activities: {}, status: 'draft', unit_id: App.user.unit_id };
+}
+
+routes.cv = async (param) => {
+  if (param === 'new') return startWizard(null);
+  if (param === 'print') return; // handled below via #/cv/:id/print
+  const parts = location.hash.replace('#/cv/', '').split('/');
+  if (parts[1] === 'print') return renderPrintView(parts[0]);
+  if (parts[1] === 'edit') {
+    const { cv } = await api('/api/cvs/' + parts[0]);
+    return startWizard(cv);
+  }
+  return renderCvDetail(parts[0]);
+};
+
+async function startWizard(existing) {
+  WZ = {
+    step: 0,
+    id: existing?.id || null,
+    cv_code: existing?.cv_code || null,
+    data: existing ? existing.data : blankCv(),
+    photo_path: existing?.photo_path || null,
+    signature_path: existing?.signature_path || null,
+    serverStatus: existing?.status || 'draft',
+  };
+  // restore local autosaved draft
+  if (!existing) {
+    try {
+      const local = JSON.parse(localStorage.getItem('bcl_cv_draft') || 'null');
+      if (local && confirm('আগের অসমাপ্ত খসড়া পাওয়া গেছে। চালিয়ে যাবেন?')) WZ.data = local;
+    } catch {}
+  }
+  renderWizard();
+}
+
+function renderWizard() {
+  const s = WZ.step;
+  setView(topbar(WZ.id ? 'CV সম্পাদনা' : 'নতুন CV', `ধাপ ${bnDigits(s + 1)} / ${bnDigits(STEPS.length)}`) + `
+  <div class="page"><div class="builder">
+    <div>
+      <div class="steps">${STEPS.map((t, i) =>
+        `<div class="step-dot ${i === s ? 'active' : ''} ${i < s ? 'done' : ''}" data-step="${i}">${bnDigits(i + 1)}. ${t}</div>`).join('')}</div>
+      <div class="card" id="stepBody"></div>
+      <div class="sticky-actions">
+        ${s > 0 ? '<button class="btn secondary" id="wPrev">← আগের ধাপ</button>' : '<button class="btn secondary" id="wClear">মুছুন</button>'}
+        <div style="flex:1"></div>
+        <button class="btn secondary" id="wSave">খসড়া সংরক্ষণ</button>
+        ${s < STEPS.length - 1 ? '<button class="btn" id="wNext">পরের ধাপ →</button>' : '<button class="btn" id="wSubmit">জমা দিন ✓</button>'}
+      </div>
+    </div>
+    <div class="preview-pane" id="previewPane"><div class="card"><h3>লাইভ প্রিভিউ</h3><div class="preview-doc" id="livePreview"></div></div></div>
+  </div></div>
+  <button class="fab-preview" id="fabPrev" title="প্রিভিউ">👁</button>`);
+
+  renderStep(); renderLivePreview();
+
+  $$('.step-dot').forEach(d => d.addEventListener('click', () => { collectStep(); WZ.step = +d.dataset.step; renderWizard(); }));
+  $('#wPrev')?.addEventListener('click', () => { collectStep(); WZ.step--; renderWizard(); });
+  $('#wClear')?.addEventListener('click', async () => {
+    if (await confirmDialog('খসড়া মুছুন', 'ফর্মের সব তথ্য মুছে যাবে।')) {
+      localStorage.removeItem('bcl_cv_draft'); WZ.data = blankCv(); renderWizard();
+    }
+  });
+  $('#wNext').addEventListener('click', () => { if (validateStep()) { collectStep(); autosaveLocal(); WZ.step++; renderWizard(); } });
+  $('#wSave').addEventListener('click', () => saveToServer('draft'));
+  $('#wSubmit').addEventListener('click', () => { if (validateStep()) { collectStep(); saveToServer('submitted'); } });
+  $('#fabPrev')?.addEventListener('click', () => {
+    const sh = document.createElement('div');
+    sh.className = 'preview-sheet';
+    sh.innerHTML = `<div class="sheet"><div class="row-flex" style="justify-content:space-between;margin-bottom:10px">
+      <b>CV প্রিভিউ</b><button class="btn secondary small" id="shClose">বন্ধ করুন</button></div>
+      <div class="preview-doc">${$('#livePreview').innerHTML}</div></div>`;
+    sh.addEventListener('click', e => { if (e.target === sh || e.target.id === 'shClose') sh.remove(); });
+    document.body.appendChild(sh);
+  });
+}
+
+function collectStep() {
+  const body = $('#stepBody');
+  if (!body) return;
+  $$('input,select,textarea', body).forEach(el => {
+    const [sec, key] = (el.name || '').split('.');
+    if (!sec || !key || el.dataset.skip) return;
+    WZ.data[sec] = WZ.data[sec] || {};
+    WZ.data[sec][key] = el.type === 'checkbox' ? el.checked : el.value;
+  });
+  renderLivePreview();
+}
+function autosaveLocal() {
+  try { localStorage.setItem('bcl_cv_draft', JSON.stringify(WZ.data)); } catch {}
+}
+
+function validateStep() {
+  const errs = [];
+  if (WZ.step === 0) {
+    const p = WZ.data.personal || {};
+    if (!p.full_name?.trim()) errs.push('পূর্ণ নাম আবশ্যক');
+    if (p.mobile && !/^01[0-9]{9}$/.test(p.mobile.replace(/[\s-]/g, ''))) errs.push('মোবাইল নম্বর সঠিক নয়');
+    if (p.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email)) errs.push('ইমেইল ঠিকানা সঠিক নয়');
+  }
+  if (WZ.step === 1 && !WZ.data.org?.current_post?.trim()) errs.push('বর্তমান পদ লিখুন');
+  if (errs.length) { toast(errs[0], 'err'); return false; }
+  return true;
+}
+
+async function saveToServer(status) {
+  const btn = status === 'draft' ? $('#wSave') : $('#wSubmit');
+  btn.classList.add('loading');
+  try {
+    const payload = { data: WZ.data, unit_id: WZ.data.unit_id || App.user.unit_id, status,
+      photo_path: WZ.photo_path, signature_path: WZ.signature_path };
+    let id = WZ.id;
+    if (id) await api('/api/cvs/' + id, { method: 'PUT', body: payload });
+    else { const r = await api('/api/cvs', { method: 'POST', body: payload }); id = r.id; WZ.id = id; WZ.cv_code = r.cv_code;
+      if (r.duplicate_mobile) toast('সতর্কতা: এই মোবাইল নম্বরে আরেকটি CV আছে', 'err'); }
+    localStorage.removeItem('bcl_cv_draft');
+    toast(status === 'draft' ? 'খসড়া সংরক্ষণ করা হয়েছে' : 'CV জমা দেওয়া হয়েছে', 'ok');
+    btn.classList.remove('loading');
+    if (status !== 'draft') location.hash = '#/cv/' + id;
+  } catch (e) { toast(e.message, 'err'); btn.classList.remove('loading'); }
+}
+
+/* ----- step bodies ----- */
+function renderStep() {
+  const el = $('#stepBody');
+  [renderPersonal, renderOrg, renderEdu, renderExp, renderAct, renderMedia][WZ.step](el);
+  // re-attach dynamic listeners after render
+  el.querySelector('#orgLevel')?.addEventListener('change', e => { collectStep(); WZ.data.org.level = e.target.value; renderStep(); });
+  el.querySelectorAll('[data-add]').forEach(b => b.addEventListener('click', () => {
+    collectStep();
+    const k = b.dataset.add;
+    WZ.data[k].push(k === 'education' ? {} : {});
+    renderStep(); renderLivePreview();
+  }));
+  el.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', () => {
+    collectStep();
+    WZ.data[b.dataset.del].splice(+b.dataset.i, 1);
+    renderStep(); renderLivePreview();
+  }));
+  el.querySelectorAll('input,select,textarea').forEach(i => i.addEventListener('input', () => { collectStep(); }));
+}
+
+function fieldHtml(sec, key, label, req = 0, type = 'text', options = null) {
+  const val = esc(WZ.data[sec]?.[key] ?? '');
+  let input;
+  if (type === 'select') input = `<select name="${sec}.${key}"><option value="">নির্বাচন করুন</option>${options.map(o => `<option ${val === o ? 'selected' : ''}>${o}</option>`).join('')}</select>`;
+  else if (type === 'textarea') input = `<textarea name="${sec}.${key}">${val}</textarea>`;
+  else input = `<input name="${sec}.${key}" type="${type}" value="${val}">`;
+  return `<div class="field"><label>${label}${req ? ' <span class="req">*</span>' : ''}</label>${input}</div>`;
+}
+
+function renderPersonal(el) {
+  el.innerHTML = `<h3 style="margin-top:0">ব্যক্তিগত তথ্য</h3><div class="form-grid two">` +
+    PERSONAL_FIELDS.map(([k, l, req, type, opts]) => fieldHtml('personal', k, l, req, type, opts)).join('') + `</div>`;
+}
+
+function unitOptions(type, selected, parentId = null) {
+  return App.units.filter(u => u.type === type && (!parentId || u.parent_id === Number(parentId)))
+    .map(u => `<option value="${u.id}" ${String(selected) === String(u.id) ? 'selected' : ''}>${esc(u.name_bn)}</option>`).join('');
+}
+
+function renderOrg(el) {
+  const o = WZ.data.org || {};
+  const lvl = o.level || 'union';
+  const lvlIdx = ORG_LEVELS.findIndex(l => l[0] === lvl);
+  let geo = '';
+  // show selectors up to the chosen level
+  const chain = [
+    ['upazila', 'উপজেলা', 'upazila_id'],
+    ['municipality', 'পৌরসভা', 'municipality_id'],
+    ['union', 'ইউনিয়ন', 'union_id'],
+    ['ward', 'ওয়ার্ড', 'ward_id'],
+    ['village', 'গ্রাম/মহল্লা', 'village_id'],
+  ];
+  for (const [t, lbl, key] of chain) {
+    const ti = ORG_LEVELS.findIndex(l => l[0] === t);
+    if (ti <= lvlIdx && ti > 0) {
+      const parentKey = { municipality: 'upazila_id', union: 'upazila_id', ward: 'municipality_id', village: 'ward_id' }[t];
+      geo += `<div class="field"><label>${lbl}</label><select name="org.${key}" data-skip="0">
+        <option value="">নির্বাচন করুন</option>${unitOptions(t, o[key], parentKey ? o[parentKey] : null)}</select></div>`;
+    }
+  }
+  const posOpts = App.positions.map(p => `<option ${o.current_post === p.title_bn ? 'selected' : ''}>${esc(p.title_bn)}</option>`).join('');
+  el.innerHTML = `<h3 style="margin-top:0">সাংগঠনিক তথ্য</h3><div class="form-grid two">
+    <div class="field"><label>সাংগঠনিক স্তর <span class="req">*</span></label>
+      <select id="orgLevel" name="org.level">${ORG_LEVELS.map(([v, l]) => `<option value="${v}" ${lvl === v ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
+    ${geo}
+    <div class="field"><label>ইউনিটের নাম</label><input name="org.unit_name" value="${esc(o.unit_name || '')}" placeholder="যেমন: কাথুলী ইউনিয়ন শাখা"></div>
+    <div class="field"><label>বর্তমান পদ <span class="req">*</span></label><select name="org.current_post"><option value="">নির্বাচন করুন</option>${posOpts}</select></div>
+    <div class="field"><label>পূর্বের পদ</label><input name="org.prev_post" value="${esc(o.prev_post || '')}"></div>
+    <div class="field"><label>দায়িত্ব গ্রহণের তারিখ</label><input name="org.from_date" type="date" value="${esc(o.from_date || '')}"></div>
+    <div class="field"><label>সদস্যপদ/আইডি নম্বর</label><input name="org.member_id" value="${esc(o.member_id || '')}"></div>
+    <div class="field"><label>সাংগঠনিক অবস্থান</label><input name="org.location_note" value="${esc(o.location_note || '')}"></div>
+  </div>
+  <p style="color:#888;font-size:13px">CV যে ইউনিটের অধীনে সংরক্ষণ হবে: <b>${esc(unitName(WZ.data.unit_id))}</b>
+  <button type="button" class="btn ghost small" id="pickUnit">বদলান</button></p>`;
+  el.querySelector('#pickUnit').addEventListener('click', () => {
+    const opts = App.units.map(u => `<option value="${u.id}" ${u.id === WZ.data.unit_id ? 'selected' : ''}>${esc(unitPath(u.id))}</option>`).join('');
+    const m = modal(`<h3 style="margin-top:0">ইউনিট নির্বাচন</h3><div class="field"><select id="unitPick">${opts}</select></div>
+      <div class="btn-row" style="justify-content:flex-end"><button class="btn" data-x="ok">ঠিক আছে</button></div>`);
+    m.addEventListener('click', e => { if (e.target.dataset.x === 'ok') { WZ.data.unit_id = +$('#unitPick').value; closeModal(); renderStep(); } });
+  });
+}
+
+function renderEdu(el) {
+  const rows = WZ.data.education || [];
+  el.innerHTML = `<h3 style="margin-top:0">শিক্ষাগত যোগ্যতা</h3>
+    ${rows.map((r, i) => `<div class="card" style="background:#f8faf9">
+      <div class="row-flex" style="justify-content:space-between"><b>যোগ্যতা ${bnDigits(i + 1)}</b>
+      <button type="button" class="btn danger small" data-del="education" data-i="${i}">মুছুন</button></div>
+      <div class="form-grid two" style="margin-top:10px">
+        <div class="field"><label>পরীক্ষার নাম</label><input data-e="education" data-i="${i}" data-k="exam" value="${esc(r.exam || '')}"></div>
+        <div class="field"><label>প্রতিষ্ঠান</label><input data-e="education" data-i="${i}" data-k="institute" value="${esc(r.institute || '')}"></div>
+        <div class="field"><label>বিষয়/বিভাগ</label><input data-e="education" data-i="${i}" data-k="subject" value="${esc(r.subject || '')}"></div>
+        <div class="field"><label>বোর্ড/বিশ্ববিদ্যালয়</label><input data-e="education" data-i="${i}" data-k="board" value="${esc(r.board || '')}"></div>
+        <div class="field"><label>পাশের সাল</label><input data-e="education" data-i="${i}" data-k="year" value="${esc(r.year || '')}"></div>
+        <div class="field"><label>ফলাফল</label><input data-e="education" data-i="${i}" data-k="result" value="${esc(r.result || '')}"></div>
+        <div class="field"><label>মন্তব্য</label><input data-e="education" data-i="${i}" data-k="note" value="${esc(r.note || '')}"></div>
+      </div></div>`).join('')}
+    <button type="button" class="btn secondary" data-add="education">＋ নতুন শিক্ষাগত যোগ্যতা যোগ করুন</button>`;
+  // wire dynamic row inputs into state
+  el.querySelectorAll('[data-e]').forEach(inp => inp.addEventListener('input', () => {
+    WZ.data[inp.dataset.e][+inp.dataset.i][inp.dataset.k] = inp.value; renderLivePreview();
+  }));
+}
+
+function renderExp(el) {
+  const rows = WZ.data.experience || [];
+  el.innerHTML = `<h3 style="margin-top:0">সাংগঠনিক অভিজ্ঞতা</h3>
+    ${rows.map((r, i) => `<div class="card" style="background:#f8faf9">
+      <div class="row-flex" style="justify-content:space-between"><b>অভিজ্ঞতা ${bnDigits(i + 1)}</b>
+      <button type="button" class="btn danger small" data-del="experience" data-i="${i}">মুছুন</button></div>
+      <div class="form-grid two" style="margin-top:10px">
+        <div class="field"><label>পদ</label><input data-e="experience" data-i="${i}" data-k="post" value="${esc(r.post || '')}"></div>
+        <div class="field"><label>সাংগঠনিক ইউনিট</label><input data-e="experience" data-i="${i}" data-k="unit" value="${esc(r.unit || '')}"></div>
+        <div class="field"><label>দায়িত্বের সময়কাল</label><input data-e="experience" data-i="${i}" data-k="period" placeholder="২০২২–২০২৪" value="${esc(r.period || '')}"></div>
+        <div class="field"><label>দায়িত্বের ধরন</label><input data-e="experience" data-i="${i}" data-k="kind" value="${esc(r.kind || '')}"></div>
+        <div class="field"><label>দায়িত্বের বিস্তারিত</label><textarea data-e="experience" data-i="${i}" data-k="detail">${esc(r.detail || '')}</textarea></div>
+      </div></div>`).join('')}
+    <button type="button" class="btn secondary" data-add="experience">＋ নতুন অভিজ্ঞতা যোগ করুন</button>`;
+  el.querySelectorAll('[data-e]').forEach(inp => inp.addEventListener('input', () => {
+    WZ.data[inp.dataset.e][+inp.dataset.i][inp.dataset.k] = inp.value; renderLivePreview();
+  }));
+}
+
+function renderAct(el) {
+  const a = WZ.data.activities || {};
+  const secs = [['org_act', 'সাংগঠনিক কার্যক্রম'], ['social_act', 'সামাজিক কার্যক্রম'], ['voluntary', 'স্বেচ্ছাসেবী কার্যক্রম'],
+    ['awards', 'পুরস্কার ও অর্জন'], ['training', 'প্রশিক্ষণ'], ['other', 'অন্যান্য গুরুত্বপূর্ণ তথ্য']];
+  el.innerHTML = `<h3 style="margin-top:0">কার্যক্রম ও অর্জন <small style="color:#888;font-weight:400">(ঐচ্ছিক)</small></h3>` +
+    secs.map(([k, l]) => `<div class="field"><label>${l}</label><textarea name="activities.${k}">${esc(a[k] || '')}</textarea></div>`).join('');
+}
+
+/* ---------- photo & signature with canvas cropper ---------- */
+function renderMedia(el) {
+  el.innerHTML = `<h3 style="margin-top:0">ছবি ও স্বাক্ষর</h3>
+    <div class="card" style="background:#f8faf9"><b>প্রোফাইল ছবি</b>
+      <div class="center" style="margin:12px 0">
+        ${WZ.photo_path ? `<img src="/uploads/${esc(WZ.photo_path)}" style="width:130px;height:150px;object-fit:cover;border-radius:10px;border:1px solid #ddd">` : '<p style="color:#888">কোনো ছবি নেই</p>'}
+      </div>
+      <div class="row-flex" style="justify-content:center"><label class="btn secondary small" style="cursor:pointer">📷 ছবি বাছুন<input type="file" id="photoFile" accept="image/*" class="hidden"></label></div>
+    </div>
+    <div class="card" style="background:#f8faf9"><b>স্বাক্ষর</b>
+      <div class="center" style="margin:12px 0">
+        ${WZ.signature_path ? `<img class="sig-img" src="/uploads/${esc(WZ.signature_path)}">` : '<p style="color:#888">কোনো স্বাক্ষর নেই</p>'}
+      </div>
+      <div class="row-flex" style="justify-content:center"><label class="btn secondary small" style="cursor:pointer">✍️ স্বাক্ষর বাছুন<input type="file" id="sigFile" accept="image/*" class="hidden"></label></div>
+    </div>`;
+  $('#photoFile').addEventListener('change', e => openCropper(e.target.files[0], 'photo'));
+  $('#sigFile').addEventListener('change', e => openCropper(e.target.files[0], 'signature'));
+}
+
+function openCropper(file, kind) {
+  if (!file) return;
+  const img = new Image();
+  img.onload = () => {
+    const frame = kind === 'photo' ? { w: 300, h: 360 } : { w: 420, h: 170 };
+    const m = modal(`<h3 style="margin-top:0">ছবি ক্রপ করুন</h3>
+      <div class="crop-stage" id="cropStage"><canvas id="cropCv"></canvas>
+        <div class="crop-frame" id="cropFrame" style="width:${frame.w / 2}px;height:${frame.h / 2}px"></div></div>
+      <div class="field" style="margin-top:12px"><label>জুম</label>
+        <input type="range" id="cropZoom" min="0.5" max="3" step="0.05" value="1" style="padding:0"></div>
+      <div class="btn-row" style="justify-content:flex-end">
+        <button class="btn secondary" data-x="cancel">বাতিল</button>
+        <button class="btn" data-x="ok">সংরক্ষণ ✓</button></div>`, { wide: true });
+    const stage = $('#cropStage', m), cv = $('#cropCv', m), ctx = cv.getContext('2d');
+    const scale = Math.min(stage.clientWidth / img.width, stage.clientHeight / img.height);
+    cv.width = img.width * scale; cv.height = img.height * scale;
+    let zoom = 1, ox = 0, oy = 0, drag = null;
+    const draw = () => {
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      ctx.drawImage(img, ox, oy, cv.width * zoom, cv.height * zoom);
+      const f = $('#cropFrame', m);
+      f.style.left = (stage.clientWidth / 2 - f.offsetWidth / 2) + 'px';
+      f.style.top = (stage.clientHeight / 2 - f.offsetHeight / 2) + 'px';
+    };
+    draw();
+    $('#cropZoom', m).addEventListener('input', e => { zoom = +e.target.value; draw(); });
+    cv.addEventListener('pointerdown', e => { drag = { x: e.clientX - ox, y: e.clientY - oy }; cv.setPointerCapture(e.pointerId); });
+    cv.addEventListener('pointermove', e => { if (drag) { ox = e.clientX - drag.x; oy = e.clientY - drag.y; draw(); } });
+    cv.addEventListener('pointerup', () => drag = null);
+    m.addEventListener('click', async e => {
+      const x = e.target.dataset.x;
+      if (x === 'cancel') closeModal();
+      if (x === 'ok') {
+        // export cropped region
+        const f = $('#cropFrame', m);
+        const rx = (stage.clientWidth / 2 - f.offsetWidth / 2 - ox) / (scale * zoom);
+        const ry = (stage.clientHeight / 2 - f.offsetHeight / 2 - oy) / (scale * zoom);
+        const rw = f.offsetWidth / (scale * zoom), rh = f.offsetHeight / (scale * zoom);
+        const out = document.createElement('canvas');
+        out.width = frame.w; out.height = frame.h;
+        const octx = out.getContext('2d');
+        octx.fillStyle = '#fff'; octx.fillRect(0, 0, out.width, out.height);
+        octx.drawImage(img, Math.max(0, rx), Math.max(0, ry), Math.min(img.width, rw), Math.min(img.height, rh), 0, 0, out.width, out.height);
+        out.toBlob(async blob => {
+          const fd = new FormData(); fd.append('file', blob, 'crop.png');
+          try {
+            const r = await fetch('/api/upload', { method: 'POST', body: fd }).then(r => r.json());
+            if (r.error) throw new Error(r.error);
+            if (kind === 'photo') WZ.photo_path = r.path; else WZ.signature_path = r.path;
+            closeModal(); renderStep(); renderLivePreview(); toast('ছবি সংরক্ষণ করা হয়েছে', 'ok');
+          } catch (err) { toast(err.message, 'err'); }
+        }, 'image/png');
+      }
+    });
+  };
+  img.src = URL.createObjectURL(file);
+}
+
+/* ---------- live preview renderer ---------- */
+function renderLivePreview() {
+  const el = $('#livePreview');
+  if (!el || !WZ) return;
+  el.innerHTML = cvDocHtml(WZ.data, WZ.photo_path, WZ.signature_path, false);
+}
+
+function cvDocHtml(d, photoPath, sigPath, forPrint) {
+  const p = d.personal || {}, o = d.org || {}, a = d.activities || {};
+  const kvRow = (l, v) => v ? `<dt>${l}</dt><dd>${esc(v)}</dd>` : '';
+  const edu = (d.education || []).filter(r => r.exam || r.institute);
+  const exp = (d.experience || []).filter(r => r.post || r.unit);
+  const actSecs = [['সাংগঠনিক কার্যক্রম', a.org_act], ['সামাজিক কার্যক্রম', a.social_act],
+    ['স্বেচ্ছাসেবী কার্যক্রম', a.voluntary], ['পুরস্কার ও অর্জন', a.awards],
+    ['প্রশিক্ষণ', a.training], ['অন্যান্য তথ্য', a.other]].filter(([, v]) => v);
+  return `
+  <div class="cv-head">
+    <div class="org">বাংলাদেশ ছাত্রলীগ</div>
+    <h2>জীবনবৃত্তান্ত (CV)</h2>
+    <div style="font-size:12px;color:#555">মেহেরপুর জেলা শাখা</div>
+  </div>
+  ${photoPath ? `<img class="cv-photo p-photo" src="/uploads/${esc(photoPath)}">` : ''}
+  <h4 class="sec">ব্যক্তিগত তথ্য</h4>
+  <dl class="kv">
+    ${kvRow('পূর্ণ নাম', p.full_name)}${kvRow('ইংরেজি বানান', p.full_name_en)}
+    ${kvRow('পিতার নাম', p.father_name)}${kvRow('মাতার নাম', p.mother_name)}
+    ${kvRow('জন্ম তারিখ', p.dob)}${kvRow('জাতীয়তা', p.nationality)}${kvRow('ধর্ম', p.religion)}
+    ${kvRow('বৈবাহিক অবস্থা', p.marital)}${kvRow('রক্তের গ্রুপ', p.blood)}
+    ${kvRow('মোবাইল', p.mobile)}${kvRow('বিকল্প মোবাইল', p.mobile2)}
+    ${kvRow('ইমেইল', p.email)}${kvRow('জাতীয় পরিচয়পত্র', p.nid)}
+    ${kvRow('বর্তমান ঠিকানা', p.present_address)}${kvRow('স্থায়ী ঠিকানা', p.permanent_address)}
+  </dl>
+  <h4 class="sec">সাংগঠনিক তথ্য</h4>
+  <dl class="kv">
+    ${kvRow('সাংগঠনিক স্তর', (ORG_LEVELS.find(l => l[0] === o.level) || [])[1])}
+    ${kvRow('ইউনিট', o.unit_name)}${kvRow('বর্তমান পদ', o.current_post)}
+    ${kvRow('পূর্বের পদ', o.prev_post)}${kvRow('দায়িত্ব গ্রহণ', o.from_date)}
+    ${kvRow('সদস্যপদ নম্বর', o.member_id)}${kvRow('অবস্থান', o.location_note)}
+  </dl>
+  ${edu.length ? `<h4 class="sec">শিক্ষাগত যোগ্যতা</h4>
+  <table><tr><th>পরীক্ষা</th><th>প্রতিষ্ঠান</th><th>বিষয়</th><th>বোর্ড</th><th>সাল</th><th>ফলাফল</th></tr>
+  ${edu.map(r => `<tr><td>${esc(r.exam)}</td><td>${esc(r.institute)}</td><td>${esc(r.subject)}</td><td>${esc(r.board)}</td><td>${esc(r.year)}</td><td>${esc(r.result)}</td></tr>`).join('')}</table>` : ''}
+  ${exp.length ? `<h4 class="sec">সাংগঠনিক অভিজ্ঞতা</h4>
+  <table><tr><th>পদ</th><th>ইউনিট</th><th>সময়কাল</th><th>বিস্তারিত</th></tr>
+  ${exp.map(r => `<tr><td>${esc(r.post)}</td><td>${esc(r.unit)}</td><td>${esc(r.period)}</td><td>${esc(r.detail)}</td></tr>`).join('')}</table>` : ''}
+  ${actSecs.map(([t, v]) => `<h4 class="sec">${t}</h4><p style="white-space:pre-wrap;margin:4px 0">${esc(v)}</p>`).join('')}
+  <div style="margin-top:26px;display:flex;justify-content:space-between">
+    <div>তারিখ: ${esc(new Date().toLocaleDateString('bn-BD'))}</div>
+    <div style="text-align:center">${sigPath ? `<img src="/uploads/${esc(sigPath)}" style="max-width:160px;max-height:70px"><br>` : '<br><br>'}(স্বাক্ষর)</div>
+  </div>`;
+}
+
+/* ---------- CV detail page ---------- */
+async function renderCvDetail(id) {
+  setView(topbar('CV বিস্তারিত', '') + `<div class="page"><div id="detail">${skeleton(5)}</div></div>`);
+  try {
+    const { cv } = await api('/api/cvs/' + id);
+    const d = cv.data, p = d.personal || {}, o = d.org || {};
+    $('#detail').innerHTML = `
+      <div class="card">
+        <div class="row-flex">
+          <div class="thumb" style="width:72px;height:72px;border-radius:18px;overflow:hidden;background:var(--green-soft);display:grid;place-items:center;font-size:26px;font-weight:800;color:var(--green-dark)">
+            ${cv.photo_path ? `<img src="/uploads/${esc(cv.photo_path)}" style="width:100%;height:100%;object-fit:cover">` : esc((p.full_name || '?')[0])}</div>
+          <div style="flex:1"><h2 style="margin:0">${esc(p.full_name || '')}</h2>
+            <div style="color:#666">${esc(o.current_post || '')} • ${esc(cv.unit_name || '')}</div>
+            <div><span class="badge ${cv.status}">${STATUS_BN[cv.status]}</span> <span class="chip">${esc(cv.cv_code || '')}</span></div></div>
+        </div>
+        <div class="btn-row">
+          ${can('edit_cv') ? `<a class="btn secondary small" href="#/cv/${cv.id}/edit">✏️ সম্পাদনা</a>` : ''}
+          <button class="btn secondary small" id="btnPrint">🖨️ প্রিন্ট / PDF</button>
+          ${can('verify_cv') && cv.status !== 'verified' ? `<button class="btn small" id="btnVerify">✓ যাচাই করুন</button>` : ''}
+          ${can('archive_cv') && cv.status !== 'archived' ? `<button class="btn danger small" id="btnArchive">আর্কাইভ</button>` : ''}
+        </div>
+      </div>
+      <div class="card"><div class="preview-doc">${cvDocHtml(d, cv.photo_path, cv.signature_path, false)}</div></div>`;
+    $('#btnPrint').addEventListener('click', () => location.hash = `#/cv/${cv.id}/print`);
+    $('#btnVerify')?.addEventListener('click', async () => {
+      if (await confirmDialog('CV যাচাই', 'এই CV টি যাচাইকৃত হিসেবে চিহ্নিত করবেন?')) {
+        await api(`/api/cvs/${cv.id}/verify`, { method: 'POST' }); toast('যাচাই করা হয়েছে', 'ok'); renderCvDetail(id);
+      }
+    });
+    $('#btnArchive')?.addEventListener('click', async () => {
+      if (await confirmDialog('আর্কাইভ করুন', 'CV টি আর্কাইভে পাঠাবেন?', 'আর্কাইভ করুন')) {
+        await api(`/api/cvs/${cv.id}/archive`, { method: 'POST' }); toast('আর্কাইভ করা হয়েছে', 'ok'); renderCvDetail(id);
+      }
+    });
+  } catch (e) { $('#detail').innerHTML = `<div class="card">⚠ ${esc(e.message)}</div>`; }
+}
+
+/* ---------- print / PDF view (dynamic A4 pages) ---------- */
+async function renderPrintView(id) {
+  try {
+    const { cv } = await api('/api/cvs/' + id);
+    const p = cv.data.personal || {};
+    document.title = `CV - ${p.full_name || cv.cv_code}`;
+    setView(`<div class="page no-print" style="max-width:900px">
+      <div class="btn-row"><a class="btn secondary" href="#/cv/${id}">← ফিরে যান</a>
+      <button class="btn" id="doPrint">🖨️ প্রিন্ট / PDF সংরক্ষণ</button></div>
+      <p style="color:#666;font-size:13px">প্রিন্ট ডায়ালগে "Save as PDF" বেছে নিন। পৃষ্ঠা সংখ্যা তথ্য অনুযায়ী স্বয়ংক্রিয় হবে।</p></div>
+      <div class="print-doc" style="max-width:210mm;margin:0 auto;padding:10mm">${cvDocHtml(cv.data, cv.photo_path, cv.signature_path, true)}</div>`);
+    $('#doPrint').addEventListener('click', () => window.print());
+  } catch (e) { setView(`<div class="page"><div class="card">⚠ ${esc(e.message)}</div></div>`); }
+}
+
+/* ---------- organizational directory (tree browser) ---------- */
+routes.directory = async () => {
+  setView(topbar('সাংগঠনিক ডিরেক্টরি', 'মেহেরপুর জেলা → উপজেলা → ইউনিয়ন → ওয়ার্ড') +
+    `<div class="page"><div class="card tree" id="dirTree">${skeleton(4)}</div></div>`);
+  try {
+    const [{ tree }, { cvs }] = await Promise.all([
+      api('/api/units/tree'),
+      can('view_members') ? api('/api/cvs') : { cvs: [] },
+    ]);
+    const counts = {};
+    for (const c of cvs) if (c.unit_id) counts[c.unit_id] = (counts[c.unit_id] || 0) + 1;
+    const renderNode = (n, depth) => `
+      <div class="tree-node"><div class="tree-row" data-unit="${n.id}">
+        <button class="tree-toggle" data-t="${n.id}">${n.children.length ? '▸' : '•'}</button>
+        <span>${esc(n.name_bn)}</span><span class="type-tag">${TYPE_BN[n.type] || ''}</span>
+        ${can('view_members') && counts[n.id] ? `<span class="badge count">${bnDigits(counts[n.id])} জন</span>` : ''}
+      </div>
+      ${n.children.length ? `<ul class="hidden" data-kids="${n.id}">${n.children.map(c => renderNode(c, depth + 1)).join('')}</ul>` : ''}
+      </div>`;
+    $('#dirTree').innerHTML = `<ul>${tree.map(n => renderNode(n, 0)).join('')}</ul>`;
+    $('#dirTree').addEventListener('click', e => {
+      const t = e.target.closest('[data-t]');
+      if (t) {
+        const kids = $(`[data-kids="${t.dataset.t}"]`);
+        if (kids) { kids.classList.toggle('hidden'); t.textContent = kids.classList.contains('hidden') ? '▸' : '▾'; }
+        return;
+      }
+      const row = e.target.closest('[data-unit]');
+      if (row) location.hash = '#/cvs?unit=' + row.dataset.unit;
+    });
+  } catch (e) { $('#dirTree').innerHTML = `<p>⚠ ${esc(e.message)}</p>`; }
+};
+
+/* ---------- admin panel ---------- */
+routes.admin = async (param) => {
+  const tab = param || 'units';
+  setView(topbar('অ্যাডমিন প্যানেল', '') + `<div class="page">
+    <div class="filters">
+      ${can('manage_units') ? `<a class="chip" href="#/admin/units" style="${tab === 'units' ? 'background:var(--green);color:#fff' : ''};text-decoration:none">🏢 ইউনিট ব্যবস্থাপনা</a>` : ''}
+      ${can('manage_positions') ? `<a class="chip" href="#/admin/positions" style="${tab === 'positions' ? 'background:var(--green);color:#fff' : ''};text-decoration:none">🎖️ পদ ব্যবস্থাপনা</a>` : ''}
+      ${can('manage_users') ? `<a class="chip" href="#/admin/users" style="${tab === 'users' ? 'background:var(--green);color:#fff' : ''};text-decoration:none">👥 ব্যবহারকারী</a>` : ''}
+    </div><div id="adminBody">${skeleton(4)}</div></div>`);
+  if (tab === 'units' && can('manage_units')) return adminUnits();
+  if (tab === 'positions' && can('manage_positions')) return adminPositions();
+  if (tab === 'users' && can('manage_users')) return adminUsers();
+  $('#adminBody').innerHTML = '<div class="card">অনুমতি নেই</div>';
+};
+
+async function adminUnits() {
+  const { tree } = await api('/api/units/tree');
+  const renderNode = n => `
+    <div class="tree-node"><div class="tree-row">
+      <button class="tree-toggle" data-t="${n.id}">${n.children.length ? '▸' : '•'}</button>
+      <span>${esc(n.name_bn)}</span><span class="type-tag">${TYPE_BN[n.type] || ''}</span>
+      <span style="margin-left:auto"></span>
+      <button class="btn ghost small" data-edit="${n.id}">✏️</button>
+      <button class="btn secondary small" data-add="${n.id}">＋</button>
+      <button class="btn danger small" data-del="${n.id}">🗑</button>
+    </div>
+    ${n.children.length ? `<ul class="hidden" data-kids="${n.id}">${n.children.map(renderNode).join('')}</ul>` : ''}</div>`;
+  $('#adminBody').innerHTML = `<div class="card"><div class="row-flex" style="justify-content:space-between;margin-bottom:12px">
+    <h3 style="margin:0">সাংগঠনিক ইউনিট</h3><button class="btn small" id="unitNew">＋ নতুন ইউনিট</button></div>
+    <div class="tree">${tree.map(renderNode).join('')}</div></div>`;
+
+  $('#adminBody').addEventListener('click', async e => {
+    const t = e.target.closest('[data-t]');
+    if (t) { const k = $(`[data-kids="${t.dataset.t}"]`); if (k) { k.classList.toggle('hidden'); t.textContent = k.classList.contains('hidden') ? '▸' : '▾'; } return; }
+    if (e.target.id === 'unitNew' || e.target.dataset.add) return unitForm(e.target.dataset.add || null);
+    if (e.target.dataset.edit) return unitForm(+e.target.dataset.edit, true);
+    if (e.target.dataset.del) {
+      const id = +e.target.dataset.del;
+      const u = App.unitsById[id];
+      if (await confirmDialog('ইউনিট নিষ্ক্রিয় করুন', `“${u.name_bn}” নিষ্ক্রিয় করা হবে।`, 'নিষ্ক্রিয় করুন')) {
+        await api('/api/units/' + id, { method: 'PUT', body: { is_active: false } });
+        toast('নিষ্ক্রিয় করা হয়েছে', 'ok'); location.reload();
+      }
+    }
+  });
+}
+
+function unitForm(parentId, editId = null) {
+  const u = editId ? App.unitsById[editId] : null;
+  const typeOpts = Object.entries(TYPE_BN).map(([v, l]) =>
+    `<option value="${v}" ${u?.type === v ? 'selected' : ''}>${l}</option>`).join('');
+  const parentOpts = `<option value="">— মূল (কোনো প্যারেন্ট নেই) —</option>` + App.units
+    .map(x => `<option value="${x.id}" ${(u?.parent_id ?? parentId) == x.id ? 'selected' : ''}>${esc(unitPath(x.id))}</option>`).join('');
+  const m = modal(`<h3 style="margin-top:0">${u ? 'ইউনিট সম্পাদনা' : 'নতুন ইউনিট'}</h3>
+    <div class="field"><label>নাম (বাংলা) *</label><input id="ufName" value="${esc(u?.name_bn || '')}"></div>
+    <div class="field"><label>নাম (ইংরেজি)</label><input id="ufEn" value="${esc(u?.name_en || '')}"></div>
+    <div class="field"><label>ধরন</label><select id="ufType">${typeOpts}</select></div>
+    <div class="field"><label>প্যারেন্ট ইউনিট</label><select id="ufParent">${parentOpts}</select></div>
+    <div class="btn-row" style="justify-content:flex-end">
+      <button class="btn secondary" data-x="c">বাতিল</button>
+      <button class="btn" data-x="s">সংরক্ষণ ✓</button></div>`, { wide: true });
+  m.addEventListener('click', async e => {
+    const x = e.target.dataset.x;
+    if (x === 'c') closeModal();
+    if (x === 's') {
+      try {
+        const body = { name_bn: $('#ufName').value, name_en: $('#ufEn').value || null,
+          type: $('#ufType').value, parent_id: $('#ufParent').value || null };
+        if (u) await api('/api/units/' + u.id, { method: 'PUT', body });
+        else await api('/api/units', { method: 'POST', body });
+        closeModal(); toast('সংরক্ষণ করা হয়েছে', 'ok'); location.reload();
+      } catch (err) { toast(err.message, 'err'); }
+    }
+  });
+}
+
+async function adminPositions() {
+  const { positions } = await api('/api/positions');
+  $('#adminBody').innerHTML = `<div class="card"><div class="row-flex" style="justify-content:space-between;margin-bottom:12px">
+    <h3 style="margin:0">পদসমূহ</h3><button class="btn small" id="posNew">＋ নতুন পদ</button></div>
+    <div class="table-wrap"><table class="data"><tr><th>পদের নাম</th><th></th></tr>
+    ${positions.map(p => `<tr><td>${esc(p.title_bn)}</td>
+      <td style="text-align:right"><button class="btn danger small" data-posdel="${p.id}">নিষ্ক্রিয়</button></td></tr>`).join('')}
+    </table></div></div>`;
+  $('#adminBody').addEventListener('click', async e => {
+    if (e.target.id === 'posNew') {
+      const m = modal(`<h3 style="margin-top:0">নতুন পদ</h3>
+        <div class="field"><label>পদের নাম *</label><input id="pfName"></div>
+        <div class="btn-row" style="justify-content:flex-end"><button class="btn" data-x="s">যোগ করুন</button></div>`);
+      m.addEventListener('click', async ev => {
+        if (ev.target.dataset.x === 's') {
+          try { await api('/api/positions', { method: 'POST', body: { title_bn: $('#pfName').value } });
+            closeModal(); toast('যোগ করা হয়েছে', 'ok'); location.reload(); }
+          catch (err) { toast(err.message, 'err'); }
+        }
+      });
+    }
+    if (e.target.dataset.posdel) {
+      await api('/api/positions/' + e.target.dataset.posdel, { method: 'PUT', body: { is_active: false } });
+      toast('নিষ্ক্রিয় করা হয়েছে', 'ok'); location.reload();
+    }
+  });
+}
+
+async function adminUsers() {
+  const { users, roles } = await api('/api/users');
+  $('#adminBody').innerHTML = `<div class="card"><div class="row-flex" style="justify-content:space-between;margin-bottom:12px">
+    <h3 style="margin:0">ব্যবহারকারী</h3><button class="btn small" id="userNew">＋ নতুন ব্যবহারকারী</button></div>
+    <div class="table-wrap"><table class="data"><tr><th>নাম</th><th>ইউজারনেম</th><th>ভূমিকা</th><th>ইউনিট</th><th>সক্রিয়</th><th></th></tr>
+    ${users.map(u => `<tr><td>${esc(u.full_name || '—')}</td><td>${esc(u.username)}</td>
+      <td>${esc(u.role_bn || u.role)}</td><td>${esc(u.unit_name || '—')}</td>
+      <td>${u.is_active ? '✓' : '✗'}</td>
+      <td style="text-align:right"><button class="btn secondary small" data-uedit="${u.id}">✏️</button></td></tr>`).join('')}
+    </table></div></div>`;
+  const userForm = (u = null) => {
+    const roleOpts = roles.map(r => `<option value="${r.name}" ${u?.role === r.name ? 'selected' : ''}>${esc(r.label_bn)}</option>`).join('');
+    const unitOpts = `<option value="">—</option>` + App.units.map(x =>
+      `<option value="${x.id}" ${u?.unit_id == x.id ? 'selected' : ''}>${esc(unitPath(x.id))}</option>`).join('');
+    const m = modal(`<h3 style="margin-top:0">${u ? 'ব্যবহারকারী সম্পাদনা' : 'নতুন ব্যবহারকারী'}</h3>
+      ${u ? '' : `<div class="field"><label>ইউজারনেম *</label><input id="ufU"></div>
+      <div class="field"><label>পাসওয়ার্ড * (কমপক্ষে ৬ অক্ষর)</label><input id="ufP" type="password"></div>`}
+      <div class="field"><label>পুরো নাম</label><input id="ufN" value="${esc(u?.full_name || '')}"></div>
+      <div class="field"><label>ভূমিকা</label><select id="ufR">${roleOpts}</select></div>
+      <div class="field"><label>সাংগঠনিক ইউনিট (স্কোপ)</label><select id="ufUn">${unitOpts}</select></div>
+      ${u ? `<div class="field"><label>নতুন পাসওয়ার্ড (ঐচ্ছিক)</label><input id="ufP" type="password"></div>
+      <div class="field"><label><input type="checkbox" id="ufA" style="width:auto" ${u.is_active ? 'checked' : ''}> সক্রিয়</label></div>` : ''}
+      <div class="btn-row" style="justify-content:flex-end"><button class="btn" data-x="s">সংরক্ষণ ✓</button></div>`, { wide: true });
+    m.addEventListener('click', async e => {
+      if (e.target.dataset.x !== 's') return;
+      try {
+        const body = { full_name: $('#ufN').value, role: $('#ufR').value, unit_id: $('#ufUn').value || null };
+        const pw = $('#ufP').value;
+        if (u) { if (pw) body.password = pw; body.is_active = $('#ufA').checked;
+          await api('/api/users/' + u.id, { method: 'PUT', body }); }
+        else { body.username = $('#ufU').value; body.password = pw;
+          await api('/api/users', { method: 'POST', body }); }
+        closeModal(); toast('সংরক্ষণ করা হয়েছে', 'ok'); location.reload();
+      } catch (err) { toast(err.message, 'err'); }
+    });
+  };
+  $('#userNew').addEventListener('click', () => userForm());
+  $('#adminBody').addEventListener('click', e => {
+    const id = e.target.dataset.uedit;
+    if (id) userForm(users.find(u => u.id === +id));
+  });
+}
+
+</script>
+</body>
+</html>
