@@ -1,0 +1,18 @@
+# Render Blueprint — BCL Meherpur CV System
+#
+# Deploy: Render Dashboard -> New -> Blueprint -> connect this repo.
+# Fill in DATABASE_URL from Supabase when prompted (sync:false).
+services:
+  - type: web
+    name: bcl-meherpur-cv-system
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false # paste Supabase Postgres connection string (use the pooler URL)
+      - key: SESSION_SECRET
+        generateValue: true
